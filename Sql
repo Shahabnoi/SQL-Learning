@@ -1,0 +1,142 @@
+•	Simple Select:
+SELECT  
+  [BusinessEntityID],
+  [PersonType],
+  [NameStyle]
+FROM [Person].[Person]
+
+
+SELECT *
+FROM [Person].[Person]
+
+•	Select with Condition: 
+SELECT *
+FROM [Person].[Person] 
+WHERE BusinessEntityID = 7
+
+SELECT *
+FROM [Person].[Person] 
+WHERE FirstName = 'Gail'
+
+SELECT *
+FROM [Person].[Person] 
+WHERE Title is null
+
+•	Select distinct for unique result
+SELECT distinct  FirstName
+FROM [Person].[Person] 
+
+•	Select top 10 of all 
+ SELECT top  10 *
+FROM [Person].[Person] 
+
+•	Sort the result on columns
+SELECT 
+   FirstName, 
+   LastName
+FROM [Person].[Person]
+ORDER BY FirstName
+
+
+•	Sort the result on columns ascending
+
+SELECT 
+   FirstName, 
+   LastName
+FROM [Person].[Person]
+ORDER BY FirstName ASC
+•	Sort the result on columns ascending descending
+
+SELECT 
+   FirstName, 
+   LastName
+FROM [Person].[Person]
+ORDER BY FirstName DESC
+
+•	Select Minimum of columns
+
+SELECT MIN(SalesYTD)
+FROM [Sales].[SalesTerritory] 
+
+•	Select Maximum of columns
+
+SELECT MAX(SalesYTD)
+FROM [Sales].[SalesTerritory] 
+
+•	COUNT Function
+SELECT COUNT(SalesYTD)
+FROM [Sales].[SalesTerritory] 
+
+•	Average  Function
+SELECT AVG(SalesYTD)
+FROM [Sales].[SalesTerritory] 
+
+•	Sum  Function
+
+SELECT SUM(SalesYTD)
+FROM [Sales].[SalesTerritory] 
+
+
+
+
+•	Insert to Table
+
+INSERT INTO [Sales].[Currency]
+VALUES ('MSS', 'SQL Dollars', GETDATE())
+
+•	Update the Table
+UPDATE [Sales].[Currency]  
+SET CurrencyCode = 'SQL'
+WHERE CurrencyCode = 'MSS'
+
+•	DELETE from Table
+
+DELETE FROM [Sales].[Currency] 
+WHERE CurrencyCode = 'MSS'
+
+•	INSERT All of Columns from Table1 to Table2
+SELECT *
+INTO [Sales].[Currency2]
+FROM [Sales].[Currency]
+SELECT FirstName, LastName
+FROM [Person].[Person]
+WHERE LastName LIKE '%l'
+
+
+SELECT     
+  E.NationalIDNumber,
+  E.JobTitle,
+  P.FirstName,
+  P.LastName
+FROM [HumanResources].[Employee] as E
+INNER JOIN [Person].[Person] as P on E.BusinessEntityID = P.BusinessEntityID
+
+SELECT     
+  P.BusinessEntityID,
+  E.FirstName,
+  E.LastName
+FROM [Person].[Person] as P
+LEFT JOIN [HumanResources].[Employee] as E on E.BusinessEntityID = P.BusinessEntityID
+SELECT
+   SUM(Freight) as TotalFreight, 
+   TerritoryID
+FROM [Sales].[SalesOrderHeader]
+GROUP BY TerritoryID
+
+
+CREATE DATABASE databasename;
+DROP DATABASE databasename;
+
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+DROP TABLE table_name;
+ALTER TABLE Customers
+ADD Email varchar(255);
+ALTER TABLE Customers
+DROP COLUMN Email;
+
